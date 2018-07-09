@@ -30,23 +30,20 @@ class DisplayNoteViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        guard let identifier = segue.identifier,
-            let destination = segue.destination as? ListNotesTableViewController
-            else { return}
+        guard let identifier = segue.identifier else {return}
         
-        
-        
-        switch identifier {
+    switch identifier {
         case "save" where note != nil:
             note?.title = titleTextField.text ?? ""
             note?.content = contentTextView.text ??  ""
-            destination.tableView.reloadData()
+            note?.modificationTime = Date()
+            CoreDataHelper.saveNote()
         case "save" where note == nil:
-            let note = Note()
+            let note = CoreDataHelper.newNote()
             note.title = titleTextField.text ?? ""
             note.content = contentTextView.text ?? ""
             note.modificationTime = Date()
-            destination.notes.append(note)
+            CoreDataHelper.saveNote()
             
         case "cancel":
             print ("cancel bar button was tapped")
