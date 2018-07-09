@@ -12,8 +12,7 @@ class DisplayNoteViewController: UIViewController {
     
      @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
-
-    
+    var note: Note?
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
