@@ -16,8 +16,14 @@ class DisplayNoteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-        titleTextField.text = ""
-        contentTextView.text = ""
+        if let note = note{
+            titleTextField.text = note.title
+            contentTextView.text = note.content
+        }else {
+            titleTextField.text = ""
+            contentTextView.text = ""
+        }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
