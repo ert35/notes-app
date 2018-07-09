@@ -54,6 +54,13 @@ class ListNotesTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            notes.remove(at: indexPath.row)
+        }
+    }
+    
+    
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue){
         
     }
